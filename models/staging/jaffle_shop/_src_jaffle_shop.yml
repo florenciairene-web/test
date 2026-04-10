@@ -1,0 +1,27 @@
+sources:
+  - name: jaffle_shop
+    database: raw
+    schema: jaffle_shop
+    description: a clone of a postgress application database.
+    tables:
+      - name: customers
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+      - name: orders
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+        config: 
+          freshness: # what condiderd freshh
+            warn_after: ## warning tell us that the data is stale
+              count: 12
+              period: hour
+            error_after: # throw us an error when dbt throw an error, the data is critically outdated
+              count: 1
+              period: day
+          loaded_at_field: _etl_loaded_at ## to check the last loaded time
