@@ -2,6 +2,7 @@ sources:
   - name: jaffle_shop
     database: raw
     schema: jaffle_shop
+    description: a clone of a postgress application database.
     tables:
       - name: customers
         columns:
